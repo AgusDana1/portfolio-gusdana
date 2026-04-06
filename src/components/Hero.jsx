@@ -8,7 +8,7 @@ export default function Hero() {
   const [showSocial, setShowSocial] = useState(false);
 
   return (
-    <section id="home" className="bg-[#0B1C2C] text-white min-h-screen flex items-center px-10">
+    <section id="home" className="bg-[#0B1C2C] text-white min-h-screen flex items-center px-10 ">
 
       <div className="grid md:grid-cols-2 gap-10 items-center w-full">
 
@@ -18,7 +18,7 @@ export default function Hero() {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl font-bold mt-2">
+          <h1 className="text-5xl font-bold mt-20">
             Hi! I'm Agus Dana
           </h1>
 
