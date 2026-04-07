@@ -12,7 +12,7 @@ export default function Navbar() {
     <nav className="flex justify-between items-center px-6 md:px-10 py-5 bg-[#0B1C2C] text-white fixed w-full top-0 z-50">
 
       {/* LOGO */}
-      <h1 className="text-xl font-bold">AGUS DANA</h1>
+      <h1 className="text-xl font-bold">MY PORTFOLIO</h1>
 
       {/* MENU DESKTOP */}
       <ul className="hidden md:flex gap-8">

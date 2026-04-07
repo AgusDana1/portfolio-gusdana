@@ -54,8 +54,28 @@ export default function()
                                 <FaNodeJs size={40} className="text-green-500" />
                                 <p className="text-sm mt-2">Node Js</p>
                             </div>
+
+                            <div className="flex flex-col items-center hover:scale-110 transition">
+                                <SiTailwindcss size={40} className="text-blue-500" />
+                                <p className="text-sm mt-2">Tailwindcss</p>
+                            </div>
+
+                            <div className="flex flex-col items-center hover:scale-110 transition">
+                                <SiJavascript size={40} className="text-yellow-500" />
+                                <p className="text-sm mt-2">Javascript</p>
                             </div>
                         </div>
+                        
+                        <div className="border-t border-gray-700 my-8"></div>
+
+                        {/* Soft Skill */}
+                        <div className="mt-6 text-gray-400 text-md">
+                            <p>• Problem Solving</p>
+                            <p>• Team Collaboration</p>
+                            <p>• Communication</p>
+                            <p>• Time Management</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
