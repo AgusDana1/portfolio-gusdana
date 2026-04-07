@@ -41,7 +41,7 @@ export default function Navbar() {
       </div>
 
       {/* MOBILE MENU */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait" initial={false}>
         {isOpen && (
           <>
             {/* OVERLAY */}
@@ -58,7 +58,7 @@ export default function Navbar() {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ duration: 0.4, ease: "easeIn" }}
+              transition={{ duration: 0.4, ease: [0.25, 0.8, 0.25, 1] }}
               className="fixed top-0 right-0 w-2/3 h-full bg-[#081420] flex flex-col items-center justify-center gap-8 text-lg z-50"
             >
 
