@@ -1,4 +1,6 @@
 import React from "react";
+import { FaLaravel, FaReact, FaNodeJs } from "react-icons/fa";
+import { SiTailwindcss, SiJavascript } from "react-icons/si";
 
 export default function()
 {
@@ -7,7 +9,7 @@ export default function()
         <section id="about" className="bg-[#081420] text-white px-10 py-20">
             <div className="grid md:grid-cols-2 gap-10 items-center">
                 <div className="bg-white/10 backdrop-blur-md border border-white/20 w-1/2 rounded-xl">
-                    <img src="/images/foto-2.png" className="object-cover rounded-xl" alt="foto-2" />
+                    <img src="/images/foto-2.png" className="object-cover rounded-md" alt="foto-2" />
                 </div>
 
                 <div>
@@ -28,6 +30,32 @@ export default function()
                             <p className="text-gray-400">Experience</p>
                         </div>
                     </div>
+
+                    {/* Line pemisah */}
+                    <div className="border-t border-gray-700 my-8"></div>
+
+                    {/* tech stack dan skill */}
+                    <div>
+                        <h3 className="text-lg font-semibold mb-4">Tech Stack & Skill</h3>
+
+                        {/* grid untuk tech stack nya */}
+                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-6 text-center">
+                            <div className="flex flex-col items-center hover:scale-110 transition">
+                                <FaLaravel size={40} className="text-red-500" />
+                                <p className="text-sm mt-2">Laravel</p>
+                            </div>
+
+                            <div className="flex flex-col items-center hover:scale-110 transition">
+                                <FaReact size={40} className="text-blue-500" />
+                                <p className="text-sm mt-2">React</p>    
+                            </div>
+
+                            <div className="flex flex-col items-center hover:scale-110 transition">
+                                <FaNodeJs size={40} className="text-green-500" />
+                                <p className="text-sm mt-2">Node Js</p>
+                            </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </section>
