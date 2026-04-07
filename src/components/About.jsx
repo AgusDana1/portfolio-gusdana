@@ -7,7 +7,7 @@ export default function()
         <section id="about" className="bg-[#081420] text-white px-10 py-20">
             <div className="grid md:grid-cols-2 gap-10 items-center">
                 <div className="bg-white/10 backdrop-blur-md border border-white/20 w-1/2 rounded-xl">
-                    <img src="/images/foto-2.png" className="object-cover" alt="foto-2" />
+                    <img src="/images/foto-2.png" className="object-cover rounded-xl" alt="foto-2" />
                 </div>
 
                 <div>
