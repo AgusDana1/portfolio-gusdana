@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import { FaInstagram, FaFacebookF, FaXTwitter } from "react-icons/fa6";
 import { useState } from "react";
+import { FaEye } from "react-icons/fa";
 
 export default function Hero() {
   const [showSocial, setShowSocial] = useState(false);
+  const [views, setViews] = useState(0);
+
+  useEffect(() => {
+    fetch("https://api.countapi.xyz/hit/agus-dana-portfolio/views")
+    .then((res) => res.json())
+    .then((data) => {
+      setViews(data.value);
+    });
+  }, []);
 
   return (
     <section id="home" className="bg-[#0B1C2C] text-white min-h-screen flex items-center px-10 ">
@@ -18,7 +28,18 @@ export default function Hero() {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl font-bold mt-20">
+
+        {/* View Counter */}
+        <motion.div 
+          initial={{opacity: 0, y: -10 }}
+          animate={{opacity: 1, y: 0}}
+          className="inline-flex items-center mt-28 gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20 mb-4"
+        >
+          <FaEye className="text-blue-400 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
+          <span className="text-sm">{views} Views</span>
+        </motion.div>
+
+          <h1 className="text-5xl font-bold mt-3">
             Hi! I'm Agus Dana
           </h1>
 
