@@ -28,10 +28,10 @@ export default function About() {
           transition={{ duration: 0.6, ease: "easeInOut" }}
           className="flex justify-center"
         >
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 w-full max-w-sm rounded-xl p-2">
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 w-full max-w-sm rounded-xl">
             <img
               src="/images/foto-2.png"
-              className="object-cover rounded-md w-full"
+              className="object-cover rounded-xl w-full"
               alt="foto-2"
             />
           </div>
