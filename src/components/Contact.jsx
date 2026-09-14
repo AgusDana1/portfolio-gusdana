@@ -8,7 +8,7 @@ export default function Contact() {
   const [copied, setCopied] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const contactEmail = "agusdana.dev@gmail.com";
+  const contactEmail = "agusdanaadnyana33@gmail.com";
   const phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "628123456789";
   const waLink = `https://wa.me/${phoneNumber}`;
 
