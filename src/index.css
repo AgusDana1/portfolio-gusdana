@@ -8,13 +8,16 @@
   color-scheme: dark;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: #000000;
   color: #f3f4f6;
-  overflow-x: hidden;
-  selection-background-color: #06b6d4;
-  selection-color: #000000;
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::selection {
@@ -56,7 +59,7 @@ html {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
