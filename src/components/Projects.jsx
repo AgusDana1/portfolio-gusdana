@@ -1,71 +1,257 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { FiExternalLink, FiGithub, FiArrowUpRight, FiLayers, FiCheck } from "react-icons/fi";
+import { FaLaravel, FaReact, FaNodeJs } from "react-icons/fa";
+import { SiTailwindcss, SiPostgresql, SiMongodb } from "react-icons/si";
 
 export default function Projects() {
-
   const ref = useRef(null);
-  const isInView = useInView(ref); // ⬅️ bisa masuk & keluar
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const projectList = [
+    {
+      id: "01",
+      title: "AutoRent - Fullstack Rental Platform",
+      category: "Fullstack",
+      description:
+        "Comprehensive web system for automated vehicle reservations, real-time availability tracking, transaction management, and administrative reporting.",
+      tags: ["React", "Laravel", "Tailwind CSS", "MySQL"],
+      status: "Production Ready",
+      featured: true,
+      demoLink: "https://example.com",
+      githubLink: "https://github.com",
+      gradient: "from-cyan-500/20 via-blue-600/10 to-transparent",
+      highlightMetric: "40% Faster Booking",
+    },
+    {
+      id: "02",
+      title: "Nexus Dashboard & Analytics Suite",
+      category: "Web App",
+      description:
+        "High-performance telemetry and business intelligence dashboard featuring interactive data visualizations, dark-mode first UI, and role-based access control.",
+      tags: ["React", "Node.js", "Tailwind CSS", "PostgreSQL"],
+      status: "Active",
+      featured: true,
+      demoLink: "https://example.com",
+      githubLink: "https://github.com",
+      gradient: "from-blue-600/20 via-indigo-600/10 to-transparent",
+      highlightMetric: "Realtime Socket Sync",
+    },
+    {
+      id: "03",
+      title: "CoreCommerce - Modern Headless Store",
+      category: "System",
+      description:
+        "Engineered with headless architecture, dynamic inventory sync, automated payment gateway integration, and microsecond response time caching.",
+      tags: ["React", "Laravel", "REST API", "Tailwind CSS"],
+      status: "Featured",
+      featured: false,
+      demoLink: "https://example.com",
+      githubLink: "https://github.com",
+      gradient: "from-emerald-500/20 via-teal-600/10 to-transparent",
+      highlightMetric: "99.9% Uptime",
+    },
+    {
+      id: "04",
+      title: "Enterprise Task & Workflow Manager",
+      category: "Fullstack",
+      description:
+        "Collaborative project workspace featuring kanban boards, real-time activity stream, file asset distribution, and automated team reminders.",
+      tags: ["React", "Node.js", "Express", "MongoDB"],
+      status: "Completed",
+      featured: false,
+      demoLink: "https://example.com",
+      githubLink: "https://github.com",
+      gradient: "from-violet-500/20 via-purple-600/10 to-transparent",
+      highlightMetric: "Modular System",
+    },
+    {
+      id: "05",
+      title: "Apex Landing & Conversion Engine",
+      category: "Web App",
+      description:
+        "Ultra-fast marketing portal with high-conversion micro-interactions, responsive grid layout, and seamless third-party CRM integration.",
+      tags: ["React", "Tailwind CSS", "Framer Motion"],
+      status: "Production",
+      featured: false,
+      demoLink: "https://example.com",
+      githubLink: "https://github.com",
+      gradient: "from-amber-500/20 via-orange-600/10 to-transparent",
+      highlightMetric: "100 Lighthouse Score",
+    },
+    {
+      id: "06",
+      title: "SecureAuth - Centralized Identity API",
+      category: "System",
+      description:
+        "OAuth2 and JWT-based authentication service with rate limiting, multi-tenant organization support, and audit trail logging.",
+      tags: ["Laravel", "PostgreSQL", "Docker", "REST API"],
+      status: "Active",
+      featured: false,
+      demoLink: "https://example.com",
+      githubLink: "https://github.com",
+      gradient: "from-cyan-600/20 via-sky-700/10 to-transparent",
+      highlightMetric: "Enterprise Security",
+    },
+  ];
+
+  const filterCategories = ["All", "Fullstack", "Web App", "System"];
+
+  const filteredProjects =
+    activeFilter === "All"
+      ? projectList
+      : projectList.filter((item) => item.category === activeFilter);
 
   return (
     <section
       id="projects"
       ref={ref}
-      className="bg-[#0B1C2C] text-white px-6 md:px-10 py-20"
+      className="relative text-white px-6 md:px-12 py-24 max-w-6xl mx-auto"
     >
-      
-      {/* TITLE */}
-      <motion.h2
-        initial={{ y: -50, opacity: 0 }}
-        animate={
-          isInView
-            ? { y: 0, opacity: 1 }
-            : { y: -50, opacity: 0 }
-        }
-        transition={{ duration: 0.6 }}
-        className="text-2xl font-bold mb-10"
-      >
-        PROJECTS
-      </motion.h2>
+      {/* SECTION HEADER */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <p className="text-cyan-400 uppercase tracking-[0.25em] text-xs font-mono mb-2">
+            // 02. PORTFOLIO SHOWCASE
+          </p>
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
+            High-Level Featured Projects
+          </h2>
+          <p className="text-neutral-400 text-base md:text-lg mt-3 max-w-xl font-light">
+            Real-world systems, intuitive applications, and production architectures engineered with precision.
+          </p>
+        </motion.div>
 
-      {/* GRID */}
-      <div className="grid md:grid-cols-3 gap-8">
-
-        {[1,2,3].map((item, index) => (
-          <motion.div
-            key={item}
-            initial={{ y: 100, opacity: 0 }}
-            animate={
-              isInView
-                ? { y: 0, opacity: 1 }
-                : { y: 100, opacity: 0 }
-            }
-            transition={{
-              duration: 0.5,
-              delay: isInView ? index * 0.2 : 0,
-            }}
-            className="bg-[#081420] rounded-2xl p-4 hover:scale-105 transition-all shadow-lg"
-          >
-
-            {/* IMAGE */}
-            <img
-              src="/images/project1.jpg"
-              className="rounded-xl w-full mb-4"
-              alt="project"
-            />
-
-            {/* TEXT */}
-            <div>
-              <h3 className="font-bold">FULLSTACK SYSTEM</h3>
-              <p className="text-gray-400 text-sm">
-                Web Rent-Car, App
-              </p>
-            </div>
-
-          </motion.div>
-        ))}
-
+        {/* FILTER BUTTONS */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex items-center gap-1.5 p-1 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md self-start md:self-auto"
+        >
+          {filterCategories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveFilter(cat)}
+              className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                activeFilter === cat
+                  ? "bg-white text-black shadow-md font-semibold"
+                  : "text-neutral-400 hover:text-white"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </motion.div>
       </div>
 
+      {/* PROJECTS GRID */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        {filteredProjects.map((project, index) => (
+          <motion.div
+            key={project.id}
+            initial={{ opacity: 0, y: 35 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{
+              duration: 0.5,
+              delay: isInView ? index * 0.1 : 0,
+            }}
+            className="group relative rounded-3xl border border-white/10 bg-neutral-950/80 hover:border-white/25 transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.9)] hover:-translate-y-1.5"
+          >
+            {/* Top Interactive Glass Window Bar */}
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/10 bg-white/[0.02]">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-neutral-600 group-hover:bg-red-500/80 transition-colors" />
+                <span className="w-2.5 h-2.5 rounded-full bg-neutral-600 group-hover:bg-yellow-500/80 transition-colors" />
+                <span className="w-2.5 h-2.5 rounded-full bg-neutral-600 group-hover:bg-green-500/80 transition-colors" />
+                <span className="ml-2 text-[11px] font-mono text-neutral-500 tracking-wider">
+                  SYS-{project.id}
+                </span>
+              </div>
+              <span className="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full bg-white/[0.05] border border-white/10 text-cyan-400">
+                {project.category}
+              </span>
+            </div>
+
+            {/* Visual Mockup Header with Glow */}
+            <div className={`relative h-44 w-full bg-gradient-to-br ${project.gradient} p-6 flex flex-col justify-between overflow-hidden border-b border-white/5`}>
+              <div className="absolute inset-0 modern-grid-dots opacity-40" />
+              
+              {/* Status Badge */}
+              <div className="relative z-10 flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono bg-black/60 border border-white/15 text-neutral-300 backdrop-blur-md">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+                  {project.status}
+                </span>
+
+                <span className="text-[11px] font-mono text-cyan-300 font-semibold bg-cyan-950/60 border border-cyan-500/30 px-2.5 py-0.5 rounded-full">
+                  {project.highlightMetric}
+                </span>
+              </div>
+
+              {/* Minimal System Graphic Representation */}
+              <div className="relative z-10">
+                <div className="text-neutral-500 font-mono text-[10px] flex items-center gap-2">
+                  <FiLayers className="text-cyan-400" />
+                  <span>ARCHITECTURE ARCHETYPE</span>
+                </div>
+                <h4 className="text-xl font-bold text-white tracking-tight mt-1 line-clamp-1 group-hover:text-cyan-300 transition-colors">
+                  {project.title}
+                </h4>
+              </div>
+            </div>
+
+            {/* Description & Tech Stack */}
+            <div className="p-6 flex flex-col flex-1 justify-between">
+              <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed line-clamp-3 font-light">
+                {project.description}
+              </p>
+
+              <div className="mt-6 pt-5 border-t border-white/10">
+                {/* Tech Pills */}
+                <div className="flex flex-wrap gap-1.5 mb-6">
+                  {project.tags.map((tag, tIdx) => (
+                    <span
+                      key={tIdx}
+                      className="px-2.5 py-1 rounded-lg text-[11px] font-mono bg-white/[0.04] border border-white/10 text-neutral-300 group-hover:border-white/20 transition-colors"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Actions (Demo & GitHub) */}
+                <div className="flex items-center justify-between pt-1">
+                  <a
+                    href={project.demoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-white hover:text-cyan-400 transition-colors group/link"
+                  >
+                    <span>Live Preview</span>
+                    <FiArrowUpRight className="text-sm group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                  </a>
+
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="View Source Code"
+                    className="p-2 rounded-full border border-white/10 hover:border-cyan-400/50 hover:bg-white/10 text-neutral-400 hover:text-white transition-all text-sm"
+                  >
+                    <FiGithub />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 }
