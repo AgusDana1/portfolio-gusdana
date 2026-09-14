@@ -56,6 +56,45 @@ export const translations = {
       toolkitTitle: "Toolkit & Frameworks",
       toolkitSubtitle: "Technologies I build with everyday",
     },
+    whyChooseMe: {
+      badge: "VALUE & ADVANTAGES",
+      sub: "// WHY CHOOSE ME",
+      titlePre: "Why Partner With",
+      titleHighlight: "Me?",
+      desc: "Delivering engineering excellence through a balance of technical capability, aesthetic fidelity, and disciplined collaboration.",
+      points: [
+        {
+          id: "01",
+          title: "Custom Solutions",
+          desc: "Tailor-made architectures designed around your specific business goals, eliminating bloat and maximizing system efficiency.",
+          tag: "Bespoke Architecture",
+        },
+        {
+          id: "02",
+          title: "Modern & Responsive",
+          desc: "Pixel-perfect layouts with intuitive fluid interactions that look and perform impeccably on smartphones, tablets, and desktops.",
+          tag: "Mobile First UI",
+        },
+        {
+          id: "03",
+          title: "Performance Focused",
+          desc: "Fast load times, microsecond query caching, and lightweight assets optimized to guarantee 95+ Lighthouse scores.",
+          tag: "Optimized Speed",
+        },
+        {
+          id: "04",
+          title: "Clear Communication",
+          desc: "Transparent milestone updates, documented progress, and collaborative discussion so you are always informed at every phase.",
+          tag: "Transparent Workflow",
+        },
+        {
+          id: "05",
+          title: "Scalable Development",
+          desc: "Modular codebases and clean API structures built to scale seamlessly alongside your business growth and user demand.",
+          tag: "Future Proof Code",
+        },
+      ],
+    },
     projects: {
       sub: "// 02. PORTFOLIO SHOWCASE",
       title: "High-Level Featured Projects",
@@ -267,6 +306,45 @@ export const translations = {
       experienceDesc: "Pembelajaran berkelanjutan dalam merilis aplikasi siap produksi.",
       toolkitTitle: "Toolkit & Framework",
       toolkitSubtitle: "Teknologi yang saya gunakan setiap hari",
+    },
+    whyChooseMe: {
+      badge: "NILAI & KEUNGGULAN",
+      sub: "// MENGAPA MEMILIH SAYA",
+      titlePre: "Mengapa Bekerja Sama dengan",
+      titleHighlight: "Saya?",
+      desc: "Menghadirkan keunggulan rekayasa perangkat lunak melalui perpaduan kapabilitas teknis, estetika modern, dan komunikasi yang transparan.",
+      points: [
+        {
+          id: "01",
+          title: "Custom Solutions",
+          desc: "Arsitektur yang dirancang khusus sesuai model dan tujuan bisnis Anda, tanpa kode berlebih untuk efisiensi sistem maksimal.",
+          tag: "Arsitektur Kustom",
+        },
+        {
+          id: "02",
+          title: "Modern & Responsive",
+          desc: "Tata letak presisi dengan interaksi yang mulus dan nyaman digunakan di smartphone, tablet, laptop, hingga monitor resolusi tinggi.",
+          tag: "UI Ramah Ponsel",
+        },
+        {
+          id: "03",
+          title: "Performance Focused",
+          desc: "Waktu muat cepat, caching query optimal, dan aset ringan berstandar tinggi untuk memastikan skor performa Lighthouse 95+.",
+          tag: "Kecepatan Teruji",
+        },
+        {
+          id: "04",
+          title: "Clear Communication",
+          desc: "Pembaruan progres berkala, transparansi alur kerja, dan diskusi solutif sehingga Anda selalu mendapatkan kepastian di setiap tahap.",
+          tag: "Kerja Transparan",
+        },
+        {
+          id: "05",
+          title: "Scalable Development",
+          desc: "Basis kode modular dan integrasi API yang siap berkembang seiring pertumbuhan skala bisnis dan peningkatan pengguna.",
+          tag: "Kode Siap Berkembang",
+        },
+      ],
     },
     projects: {
       sub: "// 02. SHOWCASE PORTOFOLIO",

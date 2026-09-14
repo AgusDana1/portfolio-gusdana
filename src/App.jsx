@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import WhyChooseMe from "./components/WhyChooseMe";
 import Projects from "./components/Projects";
 import Services from "./components/Services";
 import FAQ from "./components/FAQ";
@@ -30,6 +31,7 @@ function App() {
           <main>
             <Hero />
             <About />
+            <WhyChooseMe />
             <Projects />
             <Services />
             <FAQ />
