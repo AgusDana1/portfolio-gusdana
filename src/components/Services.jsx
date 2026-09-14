@@ -1,33 +1,17 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { FiLayout, FiServer, FiCpu, FiCheckCircle } from "react-icons/fi";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Services() {
+  const { t } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
-  const services = [
-    {
-      num: "01",
-      icon: <FiServer className="text-xl sm:text-2xl text-cyan-400" />,
-      title: "Fullstack Web Systems",
-      desc: "Architecting end-to-end applications from scratch. Combining resilient backend architectures (Laravel / Node.js) with reactive, high-speed frontend engines (React).",
-      deliverables: ["Full Architecture Setup", "Relational Database Design", "REST API Development", "Secure Session & Auth"],
-    },
-    {
-      num: "02",
-      icon: <FiLayout className="text-xl sm:text-2xl text-blue-400" />,
-      title: "Futuristic UI/UX & Web Apps",
-      desc: "Crafting fluid, high-converting interfaces that feel alive. Focusing on dark-mode-first aesthetics, seamless micro-animations, and 100% responsive layouts.",
-      deliverables: ["Responsive Cross-device UI", "Framer Motion Animations", "Design Systems & Components", "Lighthouse 95+ Performance"],
-    },
-    {
-      num: "03",
-      icon: <FiCpu className="text-xl sm:text-2xl text-emerald-400" />,
-      title: "System Integration & APIs",
-      desc: "Connecting disparate platforms into a unified ecosystem. Seamless integration of third-party APIs, payment gateways, messaging bots, and automated background jobs.",
-      deliverables: ["Payment Gateway Hooks", "OAuth & SSO Security", "Webhook Automations", "Cloud & Docker Deployment"],
-    },
+  const serviceIcons = [
+    <FiServer className="text-xl sm:text-2xl text-cyan-400" />,
+    <FiLayout className="text-xl sm:text-2xl text-blue-400" />,
+    <FiCpu className="text-xl sm:text-2xl text-emerald-400" />,
   ];
 
   return (
@@ -44,19 +28,19 @@ export default function Services() {
         className="mb-10 sm:mb-14"
       >
         <p className="text-cyan-400 uppercase tracking-[0.25em] text-xs font-mono mb-2">
-          // 03. SPECIALIZATIONS
+          {t.services.sub}
         </p>
         <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-          High-Level Engineering Services
+          {t.services.title}
         </h2>
         <p className="text-neutral-400 text-sm sm:text-base md:text-lg mt-2 sm:mt-3 max-w-2xl font-light">
-          Delivering production-grade digital solutions that combine system reliability with futuristic visual polish.
+          {t.services.desc}
         </p>
       </motion.div>
 
       {/* SERVICES GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-        {services.map((item, index) => (
+        {t.services.list.map((item, index) => (
           <motion.div
             key={item.num}
             initial={{ opacity: 0, y: 35 }}
@@ -71,7 +55,7 @@ export default function Services() {
               {/* Card Header with Number and Icon */}
               <div className="flex items-center justify-between mb-5 sm:mb-6">
                 <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:border-cyan-400/40 transition-all duration-300">
-                  {item.icon}
+                  {serviceIcons[index] || serviceIcons[0]}
                 </div>
                 <span className="text-xl sm:text-2xl font-black font-mono text-neutral-700 group-hover:text-cyan-400/40 transition-colors">
                   {item.num}
@@ -90,7 +74,7 @@ export default function Services() {
             {/* Deliverables list */}
             <div className="pt-5 sm:pt-6 border-t border-white/10 space-y-2 sm:space-y-2.5">
               <p className="text-[10px] sm:text-[11px] font-mono text-neutral-500 uppercase tracking-wider mb-2.5 sm:mb-3">
-                Key Features
+                {t.services.keyFeatures}
               </p>
               {item.deliverables.map((d, dIdx) => (
                 <div key={dIdx} className="flex items-center gap-2 text-xs text-neutral-300 font-light">

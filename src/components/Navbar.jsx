@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
 import { FiArrowUpRight } from "react-icons/fi";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Navbar() {
+  const { language, toggleLanguage, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "628123456789";
@@ -31,12 +33,43 @@ export default function Navbar() {
   }, [isOpen]);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Services", href: "#services" },
-    { name: "Contact", href: "#contact" },
+    { name: t.nav.home, href: "#home" },
+    { name: t.nav.about, href: "#about" },
+    { name: t.nav.projects, href: "#projects" },
+    { name: t.nav.services, href: "#services" },
+    { name: t.nav.faq, href: "#faq" },
+    { name: t.nav.contact, href: "#contact" },
   ];
+
+  // Modern Language Switch Toggle Button
+  const LanguageToggle = () => (
+    <button
+      type="button"
+      onClick={toggleLanguage}
+      aria-label="Switch Language between English and Indonesian"
+      title={language === "en" ? "Beralih ke Bahasa Indonesia" : "Switch to English"}
+      className="relative flex items-center bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 hover:border-cyan-400/40 rounded-full p-0.5 sm:p-1 text-[11px] sm:text-xs font-mono transition-all duration-300 active:scale-95 flex-shrink-0"
+    >
+      <span
+        className={`px-2 py-0.5 rounded-full transition-all duration-200 ${
+          language === "en"
+            ? "bg-cyan-400 text-black font-bold shadow-[0_0_10px_rgba(34,211,238,0.5)]"
+            : "text-neutral-400 hover:text-neutral-200"
+        }`}
+      >
+        EN
+      </span>
+      <span
+        className={`px-2 py-0.5 rounded-full transition-all duration-200 ${
+          language === "id"
+            ? "bg-cyan-400 text-black font-bold shadow-[0_0_10px_rgba(34,211,238,0.5)]"
+            : "text-neutral-400 hover:text-neutral-200"
+        }`}
+      >
+        ID
+      </span>
+    </button>
+  );
 
   return (
     <header className="fixed top-3 sm:top-5 left-0 right-0 z-50 flex justify-center px-3 sm:px-4">
@@ -72,21 +105,23 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* BUTTON DESKTOP */}
+        {/* DESKTOP CONTROLS: LANGUAGE SWITCH TOGGLE + LET'S TALK */}
         <div className="hidden md:flex items-center gap-3">
+          <LanguageToggle />
           <a
             href={waLink}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium text-black bg-white hover:bg-cyan-400 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(34,211,238,0.6)]"
           >
-            <span>Let's Talk</span>
+            <span>{t.nav.letsTalk}</span>
             <FiArrowUpRight className="text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </div>
 
-        {/* HAMBURGER BUTTON (MOBILE) */}
-        <div className="md:hidden flex items-center">
+        {/* MOBILE CONTROLS (SEBELAHAN DENGAN HAMBURGER MENU) */}
+        <div className="md:hidden flex items-center gap-2">
+          <LanguageToggle />
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="p-1.5 text-neutral-300 hover:text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 rounded-lg"
@@ -136,7 +171,7 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl text-black bg-white font-semibold text-sm hover:bg-cyan-400 transition-colors shadow-lg"
                 >
-                  <span>Let's Talk</span>
+                  <span>{t.nav.letsTalk}</span>
                   <FiArrowUpRight />
                 </a>
               </div>

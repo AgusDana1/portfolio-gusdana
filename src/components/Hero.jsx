@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import { FaInstagram, FaFacebookF, FaXTwitter, FaGithub, FaLinkedin } from "react-icons/fa6";
-import { FiArrowRight, FiTerminal, FiCode, FiLayers, FiCpu } from "react-icons/fi";
+import { FiArrowRight, FiTerminal } from "react-icons/fi";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Hero() {
+  const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState("profile.json");
 
   return (
@@ -28,13 +30,13 @@ export default function Hero() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
             </span>
             <span className="text-[11px] sm:text-xs font-mono tracking-wider text-cyan-300 uppercase truncate">
-              Available for Fullstack Projects
+              {t.hero.statusBadge}
             </span>
           </div>
 
           {/* MAIN HEADLINE */}
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-white">
-            Hi, I'm <span className="bg-gradient-to-r from-white via-neutral-100 to-cyan-400 bg-clip-text text-transparent">Agus Dana</span>
+            {t.hero.greeting} <span className="bg-gradient-to-r from-white via-neutral-100 to-cyan-400 bg-clip-text text-transparent">Agus Dana</span>
           </h1>
 
           {/* DYNAMIC SUBHEADLINE WITH TYPEWRITER */}
@@ -42,11 +44,8 @@ export default function Hero() {
             <span className="text-cyan-400 font-bold">&gt;</span>
             <span className="text-cyan-300">
               <Typewriter
-                words={[
-                  "Fullstack Developer",
-                  "Web System Architect",
-                  "Modern UI/UX Engineer",
-                ]}
+                key={language}
+                words={t.hero.typewriter}
                 loop
                 cursor
                 cursorStyle="_"
@@ -59,8 +58,7 @@ export default function Hero() {
 
           {/* PARAGRAPH */}
           <p className="text-neutral-400 text-sm sm:text-base md:text-lg mt-4 sm:mt-5 max-w-xl leading-relaxed font-light">
-            Crafting high-level web applications and modern digital architectures.
-            Focused on fast performance, clean systems, and futuristic minimalist design.
+            {t.hero.description}
           </p>
 
           {/* ACTION BUTTONS */}
@@ -69,7 +67,7 @@ export default function Hero() {
               href="#projects"
               className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-cyan-400 transition-all duration-300 shadow-[0_0_25px_rgba(255,255,255,0.2)] hover:shadow-[0_0_35px_rgba(34,211,238,0.5)] active:scale-95"
             >
-              <span>Explore Projects</span>
+              <span>{t.hero.btnProjects}</span>
               <FiArrowRight className="text-base group-hover:translate-x-1 transition-transform" />
             </a>
 
@@ -77,13 +75,15 @@ export default function Hero() {
               href="#contact"
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-white font-medium text-sm backdrop-blur-sm transition-all duration-200 active:scale-95"
             >
-              <span>Contact Me</span>
+              <span>{t.hero.btnContact}</span>
             </a>
           </div>
 
           {/* SOCIAL MEDIA PILLS */}
           <div className="flex items-center flex-wrap gap-2.5 sm:gap-3 mt-8 sm:mt-10">
-            <span className="text-[11px] sm:text-xs text-neutral-500 uppercase tracking-widest font-mono mr-1">Connect:</span>
+            <span className="text-[11px] sm:text-xs text-neutral-500 uppercase tracking-widest font-mono mr-1">
+              {t.hero.connect}
+            </span>
             {[
               { icon: <FaGithub />, href: "https://github.com", label: "GitHub" },
               { icon: <FaLinkedin />, href: "https://linkedin.com", label: "LinkedIn" },
@@ -124,7 +124,7 @@ export default function Hero() {
                 <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500/80 inline-block" />
                 <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500/80 inline-block" />
                 <span className="ml-1.5 sm:ml-2 text-[11px] sm:text-xs font-mono text-neutral-400 flex items-center gap-1">
-                  <FiTerminal className="text-cyan-400" /> developer-core
+                  <FiTerminal className="text-cyan-400" /> {t.hero.codeTitle}
                 </span>
               </div>
               <div className="flex items-center gap-1">
@@ -186,16 +186,16 @@ export default function Hero() {
             {/* Quick Metrics Bar at bottom of card */}
             <div className="grid grid-cols-3 border-t border-white/10 bg-white/[0.02] divide-x divide-white/10 text-center py-2.5 sm:py-3 px-1">
               <div>
-                <p className="text-[10px] sm:text-xs text-neutral-500 font-mono">CODE QUALITY</p>
-                <p className="text-xs sm:text-sm font-bold text-white mt-0.5">A+ Clean</p>
+                <p className="text-[10px] sm:text-xs text-neutral-500 font-mono">{t.hero.codeQuality}</p>
+                <p className="text-xs sm:text-sm font-bold text-white mt-0.5">{t.hero.codeQualityVal}</p>
               </div>
               <div>
-                <p className="text-[10px] sm:text-xs text-neutral-500 font-mono">UPTIME</p>
+                <p className="text-[10px] sm:text-xs text-neutral-500 font-mono">{t.hero.uptime}</p>
                 <p className="text-xs sm:text-sm font-bold text-cyan-400 mt-0.5">99.9%</p>
               </div>
               <div>
-                <p className="text-[10px] sm:text-xs text-neutral-500 font-mono">DESIGN</p>
-                <p className="text-xs sm:text-sm font-bold text-blue-400 mt-0.5">Futuristic</p>
+                <p className="text-[10px] sm:text-xs text-neutral-500 font-mono">{t.hero.design}</p>
+                <p className="text-xs sm:text-sm font-bold text-blue-400 mt-0.5">{t.hero.designVal}</p>
               </div>
             </div>
           </div>

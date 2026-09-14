@@ -1,7 +1,10 @@
 import React from "react";
 import { FiArrowUp } from "react-icons/fi";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -23,7 +26,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-2 text-[11px] sm:text-xs font-mono text-neutral-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Systems Normal • Ready for deployment</span>
+            <span>{t.footer.status}</span>
           </div>
         </div>
 
@@ -31,34 +34,39 @@ export default function Footer() {
         <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs font-medium text-neutral-400">
           <li>
             <a href="#home" className="hover:text-white transition-colors py-1">
-              Home
+              {t.nav.home}
             </a>
           </li>
           <li>
             <a href="#about" className="hover:text-white transition-colors py-1">
-              About
+              {t.nav.about}
             </a>
           </li>
           <li>
             <a href="#projects" className="hover:text-white transition-colors py-1">
-              Projects
+              {t.nav.projects}
             </a>
           </li>
           <li>
             <a href="#services" className="hover:text-white transition-colors py-1">
-              Services
+              {t.nav.services}
+            </a>
+          </li>
+          <li>
+            <a href="#faq" className="hover:text-white transition-colors py-1">
+              {t.nav.faq}
             </a>
           </li>
           <li>
             <a href="#contact" className="hover:text-white transition-colors py-1">
-              Contact
+              {t.nav.contact}
             </a>
           </li>
         </ul>
 
         {/* COPYRIGHT & SCROLL TO TOP */}
         <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-xs font-mono text-neutral-500 text-center sm:text-left">
-          <span>© {new Date().getFullYear()} Agus Dana. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Agus Dana. {t.footer.copyright}</span>
 
           <button
             onClick={scrollToTop}

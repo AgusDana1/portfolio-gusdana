@@ -1,107 +1,94 @@
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { FiExternalLink, FiGithub, FiArrowUpRight, FiLayers, FiCheck } from "react-icons/fi";
-import { FaLaravel, FaReact, FaNodeJs } from "react-icons/fa";
-import { SiTailwindcss, SiPostgresql, SiMongodb } from "react-icons/si";
+import { FiGithub, FiArrowUpRight, FiLayers } from "react-icons/fi";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Projects() {
+  const { t } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilter, setActiveFilter] = useState("all");
 
-  const projectList = [
+  const projectMeta = [
     {
       id: "01",
-      title: "AutoRent - Fullstack Rental Platform",
-      category: "Fullstack",
-      description:
-        "Comprehensive web system for automated vehicle reservations, real-time availability tracking, transaction management, and administrative reporting.",
+      categoryKey: "fullstack",
       tags: ["React", "Laravel", "Tailwind CSS", "MySQL"],
       status: "Production Ready",
-      featured: true,
       demoLink: "https://example.com",
       githubLink: "https://github.com",
       gradient: "from-cyan-500/20 via-blue-600/10 to-transparent",
-      highlightMetric: "40% Faster Booking",
     },
     {
       id: "02",
-      title: "Nexus Dashboard & Analytics Suite",
-      category: "Web App",
-      description:
-        "High-performance telemetry and business intelligence dashboard featuring interactive data visualizations, dark-mode first UI, and role-based access control.",
+      categoryKey: "webapp",
       tags: ["React", "Node.js", "Tailwind CSS", "PostgreSQL"],
       status: "Active",
-      featured: true,
       demoLink: "https://example.com",
       githubLink: "https://github.com",
       gradient: "from-blue-600/20 via-indigo-600/10 to-transparent",
-      highlightMetric: "Realtime Socket Sync",
     },
     {
       id: "03",
-      title: "CoreCommerce - Modern Headless Store",
-      category: "System",
-      description:
-        "Engineered with headless architecture, dynamic inventory sync, automated payment gateway integration, and microsecond response time caching.",
+      categoryKey: "system",
       tags: ["React", "Laravel", "REST API", "Tailwind CSS"],
       status: "Featured",
-      featured: false,
       demoLink: "https://example.com",
       githubLink: "https://github.com",
       gradient: "from-emerald-500/20 via-teal-600/10 to-transparent",
-      highlightMetric: "99.9% Uptime",
     },
     {
       id: "04",
-      title: "Enterprise Task & Workflow Manager",
-      category: "Fullstack",
-      description:
-        "Collaborative project workspace featuring kanban boards, real-time activity stream, file asset distribution, and automated team reminders.",
+      categoryKey: "fullstack",
       tags: ["React", "Node.js", "Express", "MongoDB"],
       status: "Completed",
-      featured: false,
       demoLink: "https://example.com",
       githubLink: "https://github.com",
       gradient: "from-violet-500/20 via-purple-600/10 to-transparent",
-      highlightMetric: "Modular System",
     },
     {
       id: "05",
-      title: "Apex Landing & Conversion Engine",
-      category: "Web App",
-      description:
-        "Ultra-fast marketing portal with high-conversion micro-interactions, responsive grid layout, and seamless third-party CRM integration.",
+      categoryKey: "webapp",
       tags: ["React", "Tailwind CSS", "Framer Motion"],
       status: "Production",
-      featured: false,
       demoLink: "https://example.com",
       githubLink: "https://github.com",
       gradient: "from-amber-500/20 via-orange-600/10 to-transparent",
-      highlightMetric: "100 Lighthouse",
     },
     {
       id: "06",
-      title: "SecureAuth - Centralized Identity API",
-      category: "System",
-      description:
-        "OAuth2 and JWT-based authentication service with rate limiting, multi-tenant organization support, and audit trail logging.",
+      categoryKey: "system",
       tags: ["Laravel", "PostgreSQL", "Docker", "REST API"],
       status: "Active",
-      featured: false,
       demoLink: "https://example.com",
       githubLink: "https://github.com",
       gradient: "from-cyan-600/20 via-sky-700/10 to-transparent",
-      highlightMetric: "Enterprise Security",
     },
   ];
 
-  const filterCategories = ["All", "Fullstack", "Web App", "System"];
+  // Merge static metadata with translated text from language context
+  const projectList = projectMeta.map((meta, index) => {
+    const itemTrans = t.projects.items[index] || {};
+    return {
+      ...meta,
+      title: itemTrans.title || "",
+      category: itemTrans.category || "",
+      description: itemTrans.description || "",
+      highlightMetric: itemTrans.highlightMetric || "",
+    };
+  });
+
+  const filterOptions = [
+    { key: "all", label: t.projects.filterAll },
+    { key: "fullstack", label: t.projects.filterFullstack },
+    { key: "webapp", label: t.projects.filterWebApp },
+    { key: "system", label: t.projects.filterSystem },
+  ];
 
   const filteredProjects =
-    activeFilter === "All"
+    activeFilter === "all"
       ? projectList
-      : projectList.filter((item) => item.category === activeFilter);
+      : projectList.filter((item) => item.categoryKey === activeFilter);
 
   return (
     <section
@@ -117,13 +104,13 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-cyan-400 uppercase tracking-[0.25em] text-xs font-mono mb-2">
-            // 02. PORTFOLIO SHOWCASE
+            {t.projects.sub}
           </p>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-            High-Level Featured Projects
+            {t.projects.title}
           </h2>
           <p className="text-neutral-400 text-sm sm:text-base md:text-lg mt-2 sm:mt-3 max-w-xl font-light">
-            Real-world systems, intuitive applications, and production architectures engineered with precision.
+            {t.projects.desc}
           </p>
         </motion.div>
 
@@ -134,17 +121,17 @@ export default function Projects() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-wrap items-center gap-1.5 p-1 rounded-2xl sm:rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md self-start md:self-auto"
         >
-          {filterCategories.map((cat) => (
+          {filterOptions.map((opt) => (
             <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
+              key={opt.key}
+              onClick={() => setActiveFilter(opt.key)}
               className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
-                activeFilter === cat
+                activeFilter === opt.key
                   ? "bg-white text-black shadow-md font-semibold"
                   : "text-neutral-400 hover:text-white"
               }`}
             >
-              {cat}
+              {opt.label}
             </button>
           ))}
         </motion.div>
@@ -198,7 +185,7 @@ export default function Projects() {
               <div className="relative z-10">
                 <div className="text-neutral-500 font-mono text-[9px] sm:text-[10px] flex items-center gap-1.5">
                   <FiLayers className="text-cyan-400" />
-                  <span>ARCHITECTURE ARCHETYPE</span>
+                  <span>{t.projects.archetype}</span>
                 </div>
                 <h4 className="text-lg sm:text-xl font-bold text-white tracking-tight mt-1 line-clamp-1 group-hover:text-cyan-300 transition-colors">
                   {project.title}
@@ -233,7 +220,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-white hover:text-cyan-400 transition-colors group/link py-1"
                   >
-                    <span>Live Preview</span>
+                    <span>{t.projects.livePreview}</span>
                     <FiArrowUpRight className="text-sm group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                   </a>
 

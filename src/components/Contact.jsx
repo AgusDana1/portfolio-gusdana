@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FiMail, FiSend, FiCheck, FiCopy } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [emailInput, setEmailInput] = useState("");
   const [copied, setCopied] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -43,17 +45,16 @@ export default function Contact() {
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md mb-5 sm:mb-6 max-w-full">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse flex-shrink-0" />
             <span className="text-[11px] sm:text-xs font-mono tracking-wider text-cyan-300 uppercase truncate">
-              Fast Response • Open for Inquiries
+              {t.contact.badge}
             </span>
           </div>
 
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-            Let's Architect Something <span className="bg-gradient-to-r from-white via-neutral-100 to-cyan-400 bg-clip-text text-transparent">Exceptional</span>
+            {t.contact.titlePre} <span className="bg-gradient-to-r from-white via-neutral-100 to-cyan-400 bg-clip-text text-transparent">{t.contact.titleHighlight}</span>
           </h2>
 
           <p className="text-neutral-400 text-xs sm:text-sm md:text-base mt-3 sm:mt-4 font-light leading-relaxed">
-            Have a project in mind, need a fullstack system built, or looking to collaborate?
-            Reach out directly and let's turn your concept into reality.
+            {t.contact.desc}
           </p>
 
           {/* QUICK CHANNELS */}
@@ -65,7 +66,7 @@ export default function Contact() {
               className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-400 transition-all font-medium text-xs sm:text-sm active:scale-95"
             >
               <FaWhatsapp className="text-lg flex-shrink-0" />
-              <span>Chat via WhatsApp</span>
+              <span>{t.contact.btnWa}</span>
             </a>
 
             <button
@@ -75,7 +76,7 @@ export default function Contact() {
               {copied ? (
                 <>
                   <FiCheck className="text-cyan-400 text-base" />
-                  <span className="text-cyan-400 font-semibold">Email Copied!</span>
+                  <span className="text-cyan-400 font-semibold">{t.contact.emailCopied}</span>
                 </>
               ) : (
                 <>
@@ -97,7 +98,7 @@ export default function Contact() {
                 type="email"
                 value={emailInput}
                 onChange={(e) => setEmailInput(e.target.value)}
-                placeholder="Enter your email to connect..."
+                placeholder={t.contact.inputPlaceholder}
                 required
                 className="w-full bg-transparent px-3 py-2.5 text-xs sm:text-sm text-white placeholder-neutral-500 focus:outline-none"
               />
@@ -108,18 +109,18 @@ export default function Contact() {
                 {submitted ? (
                   <>
                     <FiCheck className="text-sm" />
-                    <span>Sent</span>
+                    <span>{t.contact.btnSent}</span>
                   </>
                 ) : (
                   <>
-                    <span>Send</span>
+                    <span>{t.contact.btnSend}</span>
                     <FiSend className="text-xs" />
                   </>
                 )}
               </button>
             </div>
             <p className="text-[10px] sm:text-[11px] text-neutral-500 mt-2 font-mono">
-              No spam. Direct professional communication only.
+              {t.contact.disclaimer}
             </p>
           </form>
         </div>
