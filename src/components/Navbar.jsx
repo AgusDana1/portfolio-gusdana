@@ -72,13 +72,51 @@ export default function Navbar() {
   );
 
   return (
-    <header className="fixed top-3 sm:top-5 left-0 right-0 z-50 flex justify-center px-3 sm:px-4">
-      <nav
-        className={`w-full max-w-5xl rounded-full transition-all duration-300 flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3 border ${
-          scrolled
-            ? "bg-black/85 backdrop-blur-xl border-white/15 shadow-[0_12px_36px_rgba(0,0,0,0.8)]"
-            : "bg-black/50 backdrop-blur-lg border-white/10 shadow-[0_8px_24px_rgba(0,0,0,0.5)]"
-        }`}
+    <>
+      <motion.header
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none"
+      initial={false}
+      animate={{
+        y: scrolled ? 14 : 0,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 340,
+        damping: 28,
+        mass: 0.8,
+      }}
+    >
+      <motion.nav
+        className="pointer-events-auto flex items-center justify-between"
+        initial={false}
+        animate={{
+          width: scrolled ? "min(92%, 1024px)" : "100%",
+          borderRadius: scrolled ? 9999 : 0,
+          paddingLeft: scrolled ? 20 : 32,
+          paddingRight: scrolled ? 20 : 32,
+          paddingTop: scrolled ? 10 : 18,
+          paddingBottom: scrolled ? 10 : 18,
+          backgroundColor: scrolled ? "rgba(5, 5, 5, 0.92)" : "rgba(0, 0, 0, 0.55)",
+          borderColor: scrolled ? "rgba(255, 255, 255, 0.16)" : "rgba(255, 255, 255, 0.08)",
+          boxShadow: scrolled
+            ? "0 22px 50px -10px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(255, 255, 255, 0.14), 0 0 30px rgba(34, 211, 238, 0.1)"
+            : "0 0 0 0 rgba(0, 0, 0, 0)",
+          borderWidth: 1,
+          borderTopWidth: scrolled ? 1 : 0,
+          borderLeftWidth: scrolled ? 1 : 0,
+          borderRightWidth: scrolled ? 1 : 0,
+          borderBottomWidth: 1,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 340,
+          damping: 28,
+          mass: 0.8,
+        }}
+        style={{
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+        }}
       >
         {/* LOGO */}
         <a
@@ -129,8 +167,9 @@ export default function Navbar() {
           >
             {isOpen ? <HiX size={24} /> : <HiMenu size={24} />}
           </button>
-        </div>
-      </nav>
+          </div>
+        </motion.nav>
+      </motion.header>
 
       {/* MOBILE MENU MODAL */}
       <AnimatePresence>
@@ -179,6 +218,6 @@ export default function Navbar() {
           </>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }

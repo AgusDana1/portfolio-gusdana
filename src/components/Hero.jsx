@@ -81,11 +81,11 @@ export default function Hero() {
 
           {/* SOCIAL MEDIA PILLS */}
           <div className="flex items-center flex-wrap gap-2.5 sm:gap-3 mt-8 sm:mt-10">
-            <span className="text-[11px] sm:text-xs text-neutral-500 uppercase tracking-widest font-mono mr-1">
+            <span className="text-[11px] sm:text-xs text-neutral-500 uppercase tracking-wider font-mono mr-1">
               {t.hero.connect}
             </span>
             {[
-              { icon: <FaGithub />, href: "https://github.com", label: "GitHub" },
+              { icon: <FaGithub />, href: "https://github.com/AgusDana1", label: "GitHub" },
               { icon: <FaLinkedin />, href: "https://linkedin.com", label: "LinkedIn" },
               { icon: <FaInstagram />, href: "https://instagram.com", label: "Instagram" },
               { icon: <FaXTwitter />, href: "https://x.com", label: "X" },
