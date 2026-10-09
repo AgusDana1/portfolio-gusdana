@@ -14,7 +14,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 25);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -41,20 +41,20 @@ export default function Navbar() {
     { name: t.nav.contact, href: "#contact" },
   ];
 
-  // Modern Language Switch Toggle Button
+  // Elegant Minimalist Language Toggle
   const LanguageToggle = () => (
     <button
       type="button"
       onClick={toggleLanguage}
       aria-label="Switch Language between English and Indonesian"
       title={language === "en" ? "Beralih ke Bahasa Indonesia" : "Switch to English"}
-      className="relative flex items-center bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 hover:border-cyan-400/40 rounded-full p-0.5 sm:p-1 text-[11px] sm:text-xs font-mono transition-all duration-300 active:scale-95 flex-shrink-0"
+      className="relative flex items-center bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-full p-0.5 sm:p-1 text-[11px] sm:text-xs font-mono transition-all duration-200 active:scale-95 flex-shrink-0"
     >
       <span
         className={`px-2 py-0.5 rounded-full transition-all duration-200 ${
           language === "en"
-            ? "bg-cyan-400 text-black font-bold shadow-[0_0_10px_rgba(34,211,238,0.5)]"
-            : "text-neutral-400 hover:text-neutral-200"
+            ? "bg-zinc-100 text-black font-semibold shadow-sm"
+            : "text-zinc-500 hover:text-zinc-300"
         }`}
       >
         EN
@@ -62,8 +62,8 @@ export default function Navbar() {
       <span
         className={`px-2 py-0.5 rounded-full transition-all duration-200 ${
           language === "id"
-            ? "bg-cyan-400 text-black font-bold shadow-[0_0_10px_rgba(34,211,238,0.5)]"
-            : "text-neutral-400 hover:text-neutral-200"
+            ? "bg-zinc-100 text-black font-semibold shadow-sm"
+            : "text-zinc-500 hover:text-zinc-300"
         }`}
       >
         ID
@@ -74,38 +74,10 @@ export default function Navbar() {
   return (
     <>
       <motion.header
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none"
-      initial={false}
-      animate={{
-        y: scrolled ? 14 : 0,
-      }}
-      transition={{
-        type: "spring",
-        stiffness: 340,
-        damping: 28,
-        mass: 0.8,
-      }}
-    >
-      <motion.nav
-        className="pointer-events-auto flex items-center justify-between"
+        className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none"
         initial={false}
         animate={{
-          width: scrolled ? "min(92%, 1024px)" : "100%",
-          borderRadius: scrolled ? 9999 : 0,
-          paddingLeft: scrolled ? 20 : 32,
-          paddingRight: scrolled ? 20 : 32,
-          paddingTop: scrolled ? 10 : 18,
-          paddingBottom: scrolled ? 10 : 18,
-          backgroundColor: scrolled ? "rgba(5, 5, 5, 0.92)" : "rgba(0, 0, 0, 0.55)",
-          borderColor: scrolled ? "rgba(255, 255, 255, 0.16)" : "rgba(255, 255, 255, 0.08)",
-          boxShadow: scrolled
-            ? "0 22px 50px -10px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(255, 255, 255, 0.14), 0 0 30px rgba(34, 211, 238, 0.1)"
-            : "0 0 0 0 rgba(0, 0, 0, 0)",
-          borderWidth: 1,
-          borderTopWidth: scrolled ? 1 : 0,
-          borderLeftWidth: scrolled ? 1 : 0,
-          borderRightWidth: scrolled ? 1 : 0,
-          borderBottomWidth: 1,
+          y: scrolled ? 14 : 0,
         }}
         transition={{
           type: "spring",
@@ -113,60 +85,88 @@ export default function Navbar() {
           damping: 28,
           mass: 0.8,
         }}
-        style={{
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-        }}
       >
-        {/* LOGO */}
-        <a
-          href="#home"
-          className="flex items-center gap-2 group text-sm sm:text-base font-bold tracking-wider"
+        <motion.nav
+          className="pointer-events-auto flex items-center justify-between"
+          initial={false}
+          animate={{
+            width: scrolled ? "min(92%, 1024px)" : "100%",
+            borderRadius: scrolled ? 9999 : 0,
+            paddingLeft: scrolled ? 20 : 36,
+            paddingRight: scrolled ? 20 : 36,
+            paddingTop: scrolled ? 10 : 18,
+            paddingBottom: scrolled ? 10 : 18,
+            backgroundColor: scrolled ? "rgba(14, 14, 14, 0.94)" : "rgba(7, 7, 7, 0.65)",
+            borderColor: scrolled ? "rgba(255, 255, 255, 0.12)" : "rgba(255, 255, 255, 0.06)",
+            boxShadow: scrolled
+              ? "0 20px 45px -10px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(255, 255, 255, 0.08)"
+              : "0 0 0 0 rgba(0, 0, 0, 0)",
+            borderWidth: 1,
+            borderTopWidth: scrolled ? 1 : 0,
+            borderLeftWidth: scrolled ? 1 : 0,
+            borderRightWidth: scrolled ? 1 : 0,
+            borderBottomWidth: 1,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 340,
+            damping: 28,
+            mass: 0.8,
+          }}
+          style={{
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+          }}
         >
-          <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee] animate-pulse" />
-          <span className="text-white tracking-widest text-xs sm:text-sm md:text-base font-extrabold">
-            AGUS<span className="text-cyan-400">DANA</span>
-          </span>
-        </a>
-
-        {/* MENU DESKTOP */}
-        <ul className="hidden md:flex items-center gap-1 bg-white/[0.04] p-1 rounded-full border border-white/5">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <a
-                href={link.href}
-                className="px-3.5 lg:px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium text-neutral-300 hover:text-white hover:bg-white/10 transition-all duration-200"
-              >
-                {link.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* DESKTOP CONTROLS: LANGUAGE SWITCH TOGGLE + LET'S TALK */}
-        <div className="hidden md:flex items-center gap-3">
-          <LanguageToggle />
+          {/* BRAND LOGO */}
           <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium text-black bg-white hover:bg-cyan-400 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(34,211,238,0.6)]"
+            href="#home"
+            className="flex items-center gap-2 group text-sm sm:text-base font-medium tracking-tight text-white hover:text-zinc-200 transition-colors"
           >
-            <span>{t.nav.letsTalk}</span>
-            <FiArrowUpRight className="text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <div className="w-2 h-2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
+            <span className="font-semibold tracking-wider text-xs sm:text-sm md:text-base">
+              AGUS<span className="text-zinc-400 font-normal">DANA</span>
+            </span>
           </a>
-        </div>
 
-        {/* MOBILE CONTROLS (SEBELAHAN DENGAN HAMBURGER MENU) */}
-        <div className="md:hidden flex items-center gap-2">
-          <LanguageToggle />
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="p-1.5 text-neutral-300 hover:text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 rounded-lg"
-            aria-label="Toggle Menu"
-          >
-            {isOpen ? <HiX size={24} /> : <HiMenu size={24} />}
-          </button>
+          {/* DESKTOP NAVIGATION MENU */}
+          <ul className="hidden md:flex items-center gap-1 bg-zinc-900/60 p-1 rounded-full border border-zinc-800">
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <a
+                  href={link.href}
+                  className="px-3.5 lg:px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/80 transition-all duration-200"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* DESKTOP ACTIONS: LANGUAGE SWITCH + CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            <LanguageToggle />
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium text-black bg-zinc-100 hover:bg-white transition-all duration-200 shadow-sm"
+            >
+              <span>{t.nav.letsTalk}</span>
+              <FiArrowUpRight className="text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+          </div>
+
+          {/* MOBILE CONTROLS (SEBELAHAN DENGAN HAMBURGER MENU) */}
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-1.5 text-zinc-300 hover:text-white bg-zinc-900 border border-zinc-800 rounded-lg focus:outline-none"
+              aria-label="Toggle Menu"
+            >
+              {isOpen ? <HiX size={22} /> : <HiMenu size={22} />}
+            </button>
           </div>
         </motion.nav>
       </motion.header>
@@ -187,7 +187,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.96 }}
               transition={{ duration: 0.2 }}
-              className="fixed top-16 sm:top-20 left-4 right-4 max-h-[82vh] overflow-y-auto bg-neutral-950/95 border border-white/10 p-5 sm:p-6 rounded-3xl z-50 flex flex-col gap-4 shadow-2xl backdrop-blur-2xl md:hidden"
+              className="fixed top-16 sm:top-20 left-4 right-4 max-h-[82vh] overflow-y-auto bg-zinc-950/98 border border-zinc-800 p-5 sm:p-6 rounded-2xl z-50 flex flex-col gap-4 shadow-2xl backdrop-blur-2xl md:hidden"
             >
               <div className="flex flex-col gap-1.5">
                 {navLinks.map((link) => (
@@ -195,20 +195,20 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="px-4 py-3 rounded-2xl text-neutral-300 hover:text-white hover:bg-white/5 active:bg-white/10 transition-all text-base font-medium"
+                    className="px-4 py-3 rounded-xl text-zinc-300 hover:text-white hover:bg-zinc-900 active:bg-zinc-800 transition-all text-sm font-medium"
                   >
                     {link.name}
                   </a>
                 ))}
               </div>
 
-              <div className="pt-3 border-t border-white/10">
+              <div className="pt-3 border-t border-zinc-800">
                 <a
                   href={waLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl text-black bg-white font-semibold text-sm hover:bg-cyan-400 transition-colors shadow-lg"
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-black bg-zinc-100 font-medium text-sm hover:bg-white transition-colors shadow-sm"
                 >
                   <span>{t.nav.letsTalk}</span>
                   <FiArrowUpRight />

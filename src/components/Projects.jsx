@@ -17,7 +17,6 @@ export default function Projects() {
       status: "Production Ready",
       demoLink: "https://example.com",
       githubLink: "https://github.com",
-      gradient: "from-cyan-500/20 via-blue-600/10 to-transparent",
     },
     {
       id: "02",
@@ -26,7 +25,6 @@ export default function Projects() {
       status: "Active",
       demoLink: "https://example.com",
       githubLink: "https://github.com",
-      gradient: "from-blue-600/20 via-indigo-600/10 to-transparent",
     },
     {
       id: "03",
@@ -35,7 +33,6 @@ export default function Projects() {
       status: "Featured",
       demoLink: "https://example.com",
       githubLink: "https://github.com",
-      gradient: "from-emerald-500/20 via-teal-600/10 to-transparent",
     },
     {
       id: "04",
@@ -44,7 +41,6 @@ export default function Projects() {
       status: "Completed",
       demoLink: "https://example.com",
       githubLink: "https://github.com",
-      gradient: "from-violet-500/20 via-purple-600/10 to-transparent",
     },
     {
       id: "05",
@@ -53,7 +49,6 @@ export default function Projects() {
       status: "Production",
       demoLink: "https://example.com",
       githubLink: "https://github.com",
-      gradient: "from-amber-500/20 via-orange-600/10 to-transparent",
     },
     {
       id: "06",
@@ -62,7 +57,6 @@ export default function Projects() {
       status: "Active",
       demoLink: "https://example.com",
       githubLink: "https://github.com",
-      gradient: "from-cyan-600/20 via-sky-700/10 to-transparent",
     },
   ];
 
@@ -103,13 +97,13 @@ export default function Projects() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-cyan-400 uppercase tracking-[0.25em] text-xs font-mono mb-2">
+          <p className="text-zinc-500 uppercase tracking-widest text-xs font-mono mb-2">
             {t.projects.sub}
           </p>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-white">
             {t.projects.title}
           </h2>
-          <p className="text-neutral-400 text-sm sm:text-base md:text-lg mt-2 sm:mt-3 max-w-xl font-light">
+          <p className="text-zinc-400 text-sm sm:text-base md:text-lg mt-2 sm:mt-3 max-w-xl font-light">
             {t.projects.desc}
           </p>
         </motion.div>
@@ -118,8 +112,8 @@ export default function Projects() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap items-center gap-1.5 p-1 rounded-2xl sm:rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md self-start md:self-auto"
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="flex flex-wrap items-center gap-1.5 p-1 rounded-full border border-zinc-800 bg-zinc-900/60 backdrop-blur-md self-start md:self-auto"
         >
           {filterOptions.map((opt) => (
             <button
@@ -127,8 +121,8 @@ export default function Projects() {
               onClick={() => setActiveFilter(opt.key)}
               className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                 activeFilter === opt.key
-                  ? "bg-white text-black shadow-md font-semibold"
-                  : "text-neutral-400 hover:text-white"
+                  ? "bg-zinc-100 text-black font-semibold shadow-sm"
+                  : "text-zinc-400 hover:text-white"
               }`}
             >
               {opt.label}
@@ -142,52 +136,52 @@ export default function Projects() {
         {filteredProjects.map((project, index) => (
           <motion.div
             key={project.id}
-            initial={{ opacity: 0, y: 35 }}
+            initial={{ opacity: 0, y: 25 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{
               duration: 0.5,
-              delay: isInView ? index * 0.1 : 0,
+              delay: isInView ? index * 0.08 : 0,
             }}
-            className="group relative rounded-2xl sm:rounded-3xl border border-white/10 bg-neutral-950/80 hover:border-white/25 transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.9)] hover:-translate-y-1.5"
+            className="group relative rounded-2xl sm:rounded-3xl border border-zinc-800 bg-[#0d0d0d] hover:border-zinc-700 hover:bg-[#111111] transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:-translate-y-1"
           >
             {/* Top Interactive Glass Window Bar */}
-            <div className="flex items-center justify-between px-4 sm:px-5 py-3 sm:py-3.5 border-b border-white/10 bg-white/[0.02]">
+            <div className="flex items-center justify-between px-4 sm:px-5 py-3 sm:py-3.5 border-b border-zinc-800 bg-zinc-900/40">
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-neutral-600 group-hover:bg-red-500/80 transition-colors" />
-                <span className="w-2.5 h-2.5 rounded-full bg-neutral-600 group-hover:bg-yellow-500/80 transition-colors" />
-                <span className="w-2.5 h-2.5 rounded-full bg-neutral-600 group-hover:bg-green-500/80 transition-colors" />
-                <span className="ml-1.5 sm:ml-2 text-[10px] sm:text-[11px] font-mono text-neutral-500 tracking-wider">
+                <span className="w-2.5 h-2.5 rounded-full bg-zinc-600 inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-zinc-600 inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-zinc-600 inline-block" />
+                <span className="ml-1.5 sm:ml-2 text-[10px] sm:text-[11px] font-mono text-zinc-500 tracking-wider">
                   SYS-{project.id}
                 </span>
               </div>
-              <span className="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full bg-white/[0.05] border border-white/10 text-cyan-400">
+              <span className="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full bg-zinc-800/80 border border-zinc-700/80 text-zinc-300">
                 {project.category}
               </span>
             </div>
 
-            {/* Visual Mockup Header with Glow */}
-            <div className={`relative h-40 sm:h-44 w-full bg-gradient-to-br ${project.gradient} p-4 sm:p-6 flex flex-col justify-between overflow-hidden border-b border-white/5`}>
-              <div className="absolute inset-0 modern-grid-dots opacity-40" />
+            {/* Visual Header with Subtle Dark Gray Tone */}
+            <div className="relative h-40 sm:h-44 w-full bg-gradient-to-b from-zinc-900/70 to-zinc-950 p-4 sm:p-6 flex flex-col justify-between overflow-hidden border-b border-zinc-800/80">
+              <div className="absolute inset-0 simple-dots-bg opacity-30" />
               
               {/* Status Badge */}
               <div className="relative z-10 flex items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono bg-black/60 border border-white/15 text-neutral-300 backdrop-blur-md">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono bg-black/70 border border-zinc-800 text-zinc-300 backdrop-blur-md">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
                   {project.status}
                 </span>
 
-                <span className="text-[10px] sm:text-[11px] font-mono text-cyan-300 font-semibold bg-cyan-950/60 border border-cyan-500/30 px-2.5 py-0.5 rounded-full">
+                <span className="text-[10px] sm:text-[11px] font-mono text-zinc-300 font-medium bg-zinc-900/90 border border-zinc-800 px-2.5 py-0.5 rounded-full">
                   {project.highlightMetric}
                 </span>
               </div>
 
               {/* Minimal System Graphic Representation */}
               <div className="relative z-10">
-                <div className="text-neutral-500 font-mono text-[9px] sm:text-[10px] flex items-center gap-1.5">
-                  <FiLayers className="text-cyan-400" />
+                <div className="text-zinc-500 font-mono text-[9px] sm:text-[10px] flex items-center gap-1.5">
+                  <FiLayers className="text-zinc-400" />
                   <span>{t.projects.archetype}</span>
                 </div>
-                <h4 className="text-lg sm:text-xl font-bold text-white tracking-tight mt-1 line-clamp-1 group-hover:text-cyan-300 transition-colors">
+                <h4 className="text-lg sm:text-xl font-semibold text-white tracking-tight mt-1 line-clamp-1 group-hover:text-zinc-200 transition-colors">
                   {project.title}
                 </h4>
               </div>
@@ -195,17 +189,17 @@ export default function Projects() {
 
             {/* Description & Tech Stack */}
             <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between">
-              <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed line-clamp-3 font-light">
+              <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed line-clamp-3 font-light">
                 {project.description}
               </p>
 
-              <div className="mt-5 sm:mt-6 pt-4 sm:pt-5 border-t border-white/10">
+              <div className="mt-5 sm:mt-6 pt-4 sm:pt-5 border-t border-zinc-800">
                 {/* Tech Pills */}
                 <div className="flex flex-wrap gap-1.5 mb-5 sm:mb-6">
                   {project.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
-                      className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-[10px] sm:text-[11px] font-mono bg-white/[0.04] border border-white/10 text-neutral-300 group-hover:border-white/20 transition-colors"
+                      className="px-2.5 py-0.5 sm:py-1 rounded-md text-[10px] sm:text-[11px] font-mono bg-zinc-900 border border-zinc-800 text-zinc-400"
                     >
                       {tag}
                     </span>
@@ -218,7 +212,7 @@ export default function Projects() {
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-white hover:text-cyan-400 transition-colors group/link py-1"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-200 hover:text-white transition-colors group/link py-1"
                   >
                     <span>{t.projects.livePreview}</span>
                     <FiArrowUpRight className="text-sm group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
@@ -229,7 +223,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="View Source Code"
-                    className="p-2 rounded-full border border-white/10 hover:border-cyan-400/50 hover:bg-white/10 text-neutral-400 hover:text-white transition-all text-sm"
+                    className="p-2 rounded-full border border-zinc-800 bg-zinc-900/60 hover:bg-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-white transition-all text-sm"
                   >
                     <FiGithub />
                   </a>

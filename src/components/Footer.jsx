@@ -10,28 +10,28 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-white/10 bg-black/80 backdrop-blur-xl text-neutral-400 py-10 sm:py-12 px-4 sm:px-8 md:px-12 mt-12 sm:mt-20">
+    <footer className="relative border-t border-zinc-800 bg-[#070707] text-zinc-400 py-10 sm:py-12 px-4 sm:px-8 md:px-12 mt-12 sm:mt-20">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* BRAND & STATUS */}
         <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-left">
           <div className="flex items-center gap-2">
-            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]" />
-            <span className="text-white font-bold tracking-wider text-xs sm:text-sm">
-              AGUS<span className="text-cyan-400">DANA</span>
+            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-white" />
+            <span className="text-white font-semibold tracking-wider text-xs sm:text-sm">
+              AGUS<span className="text-zinc-500 font-normal">DANA</span>
             </span>
           </div>
 
-          <span className="hidden sm:inline text-neutral-700">|</span>
+          <span className="hidden sm:inline text-zinc-800">|</span>
 
-          <div className="flex items-center gap-2 text-[11px] sm:text-xs font-mono text-neutral-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="flex items-center gap-2 text-[11px] sm:text-xs font-mono text-zinc-500">
+            <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-pulse" />
             <span>{t.footer.status}</span>
           </div>
         </div>
 
         {/* QUICK LINKS */}
-        <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs font-medium text-neutral-400">
+        <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs font-medium text-zinc-400">
           <li>
             <a href="#home" className="hover:text-white transition-colors py-1">
               {t.nav.home}
@@ -65,13 +65,13 @@ export default function Footer() {
         </ul>
 
         {/* COPYRIGHT & SCROLL TO TOP */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-xs font-mono text-neutral-500 text-center sm:text-left">
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-xs font-mono text-zinc-500 text-center sm:text-left">
           <span>© {new Date().getFullYear()} Agus Dana. {t.footer.copyright}</span>
 
           <button
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="w-8 h-8 rounded-full border border-white/10 bg-white/[0.03] hover:bg-white/10 hover:border-cyan-400/50 hover:text-white flex items-center justify-center transition-all text-sm active:scale-90"
+            className="w-8 h-8 rounded-full border border-zinc-800 bg-zinc-900/60 hover:bg-zinc-800 hover:border-zinc-700 hover:text-white flex items-center justify-center transition-all text-sm active:scale-90"
           >
             <FiArrowUp />
           </button>

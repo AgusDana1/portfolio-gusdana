@@ -28,24 +28,27 @@ export default function FAQ() {
         transition={{ duration: 0.6 }}
         className="text-center max-w-2xl mx-auto mb-12 sm:mb-16"
       >
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md mb-4">
-          <FiHelpCircle className="text-cyan-400 text-xs" />
-          <span className="text-[11px] sm:text-xs font-mono tracking-wider text-cyan-300 uppercase">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/80 backdrop-blur-md mb-4">
+          <FiHelpCircle className="text-zinc-400 text-xs" />
+          <span className="text-[11px] sm:text-xs font-mono tracking-wider text-zinc-300 uppercase">
             {t.faq.badge}
           </span>
         </div>
 
-        <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-          {t.faq.titlePre} <span className="bg-gradient-to-r from-white via-neutral-100 to-cyan-400 bg-clip-text text-transparent">{t.faq.titleHighlight}</span>
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-white">
+          {t.faq.titlePre}{" "}
+          <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
+            {t.faq.titleHighlight}
+          </span>
         </h2>
         
-        <p className="text-neutral-400 text-sm sm:text-base mt-3 font-light leading-relaxed">
+        <p className="text-zinc-400 text-sm sm:text-base mt-3 font-light leading-relaxed">
           {t.faq.desc}
         </p>
       </motion.div>
 
       {/* ACCORDION LIST */}
-      <div className="space-y-4">
+      <div className="space-y-3.5 sm:space-y-4">
         {t.faq.items.map((faq, index) => {
           const isOpen = openIndex === index;
 
@@ -57,8 +60,8 @@ export default function FAQ() {
               transition={{ duration: 0.4, delay: isInView ? index * 0.08 : 0 }}
               className={`rounded-2xl sm:rounded-3xl border transition-all duration-300 backdrop-blur-xl overflow-hidden ${
                 isOpen
-                  ? "bg-neutral-950/90 border-cyan-500/40 shadow-[0_10px_35px_rgba(6,182,212,0.15)]"
-                  : "bg-neutral-950/60 border-white/10 hover:border-white/20 hover:bg-neutral-950/80 shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+                  ? "bg-[#121212] border-zinc-700 shadow-[0_10px_35px_rgba(0,0,0,0.6)]"
+                  : "bg-[#0d0d0d] border-zinc-800/80 hover:border-zinc-700 hover:bg-[#111111] shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
               }`}
             >
               {/* ACCORDION TRIGGER */}
@@ -72,18 +75,18 @@ export default function FAQ() {
                   <span
                     className={`font-mono text-xs sm:text-sm font-semibold px-2.5 py-1 rounded-lg border transition-colors flex-shrink-0 ${
                       isOpen
-                        ? "bg-cyan-500/10 border-cyan-500/30 text-cyan-300"
-                        : "bg-white/[0.03] border-white/10 text-neutral-500 group-hover:text-neutral-300"
+                        ? "bg-zinc-800 border-zinc-700 text-zinc-100"
+                        : "bg-zinc-900 border-zinc-800 text-zinc-500 group-hover:text-zinc-300"
                     }`}
                   >
                     {faq.num}
                   </span>
                   
                   <span
-                    className={`text-sm sm:text-base md:text-lg font-semibold transition-colors leading-snug ${
+                    className={`text-sm sm:text-base md:text-lg font-medium transition-colors leading-snug ${
                       isOpen
-                        ? "text-white"
-                        : "text-neutral-300 group-hover:text-white"
+                        ? "text-white font-semibold"
+                        : "text-zinc-300 group-hover:text-white"
                     }`}
                   >
                     {faq.question}
@@ -94,8 +97,8 @@ export default function FAQ() {
                 <div
                   className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                     isOpen
-                      ? "bg-cyan-400 text-black border-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.5)] rotate-180"
-                      : "bg-white/[0.04] border-white/10 text-neutral-400 group-hover:border-white/20 group-hover:text-white rotate-0"
+                      ? "bg-zinc-100 text-black border-white shadow-sm rotate-180"
+                      : "bg-zinc-900 border-zinc-800 text-zinc-400 group-hover:border-zinc-700 group-hover:text-white rotate-0"
                   }`}
                 >
                   <FiChevronDown className="text-base sm:text-lg transition-transform" />
@@ -113,7 +116,7 @@ export default function FAQ() {
                     transition={{ duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-1 text-xs sm:text-sm md:text-base text-neutral-400 font-light leading-relaxed border-t border-white/5">
+                    <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-1 text-xs sm:text-sm md:text-base text-zinc-400 font-light leading-relaxed border-t border-zinc-800/80">
                       <p>{faq.answer}</p>
                     </div>
                   </motion.div>
@@ -131,11 +134,11 @@ export default function FAQ() {
         transition={{ duration: 0.5, delay: 0.4 }}
         className="mt-10 sm:mt-12 text-center"
       >
-        <p className="text-xs sm:text-sm text-neutral-400 font-light inline-flex items-center flex-wrap justify-center gap-2">
+        <p className="text-xs sm:text-sm text-zinc-400 font-light inline-flex items-center flex-wrap justify-center gap-2">
           <span>{t.faq.stillQuestions}</span>
           <a
             href="#contact"
-            className="inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-medium underline underline-offset-4 transition-colors"
+            className="inline-flex items-center gap-1 text-zinc-200 hover:text-white font-medium underline underline-offset-4 transition-colors"
           >
             <span>{t.faq.askDirect}</span>
             <FiArrowRight className="text-xs" />
