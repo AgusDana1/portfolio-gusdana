@@ -4,7 +4,7 @@ import { HiMenu, HiX } from "react-icons/hi";
 import { FiArrowUpRight } from "react-icons/fi";
 import { useLanguage } from "../context/LanguageContext";
 
-export default function Navbar() {
+export default function Navbar({ isLoaded = true }) {
   const { language, toggleLanguage, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -75,14 +75,15 @@ export default function Navbar() {
     <>
       <motion.header
         className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none"
-        initial={false}
+        initial={{ y: -80, opacity: 0 }}
         animate={{
-          y: scrolled ? 14 : 0,
+          y: isLoaded ? (scrolled ? 14 : 0) : -80,
+          opacity: isLoaded ? 1 : 0,
         }}
         transition={{
           type: "spring",
-          stiffness: 340,
-          damping: 28,
+          stiffness: 300,
+          damping: 26,
           mass: 0.8,
         }}
       >

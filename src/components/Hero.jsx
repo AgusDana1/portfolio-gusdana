@@ -5,7 +5,7 @@ import { FaInstagram, FaFacebookF, FaXTwitter, FaGithub, FaLinkedin } from "reac
 import { FiArrowRight, FiTerminal } from "react-icons/fi";
 import { useLanguage } from "../context/LanguageContext";
 
-export default function Hero() {
+export default function Hero({ isLoaded = true }) {
   const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState("profile.json");
 
@@ -18,9 +18,9 @@ export default function Hero() {
         
         {/* LEFT COLUMN: HERO HEADLINE & CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 35 }}
+          animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 35 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-7 flex flex-col items-start w-full"
         >
           {/* STATUS PILL BADGE */}
@@ -110,9 +110,9 @@ export default function Hero() {
 
         {/* RIGHT COLUMN: ELEGANT DARK GRAY TERMINAL / SYSTEM CARD */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
+          initial={{ opacity: 0, x: 30, scale: 0.96 }}
+          animate={isLoaded ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 30, scale: 0.96 }}
+          transition={{ duration: 0.85, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-5 relative w-full"
         >
           {/* Subtle Ambient Behind Card */}

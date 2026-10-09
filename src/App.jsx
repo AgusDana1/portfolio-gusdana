@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import OpeningScene from "./components/OpeningScene";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -11,8 +12,13 @@ import Footer from "./components/Footer";
 import { LanguageProvider } from "./context/LanguageContext";
 
 export default function App() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <LanguageProvider>
+      {/* Intro Opening Scene with Assembly Animation */}
+      <OpeningScene onComplete={() => setIsLoaded(true)} />
+
       <div className="relative min-h-screen bg-[#070707] text-[#ededed] font-sans antialiased selection:bg-white/20 selection:text-white">
         {/* Subtle, Elegant Background Layer */}
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -27,9 +33,9 @@ export default function App() {
 
         {/* Semantic Content Structure */}
         <div className="relative z-10">
-          <Navbar />
+          <Navbar isLoaded={isLoaded} />
           <main>
-            <Hero />
+            <Hero isLoaded={isLoaded} />
             <About />
             <WhyChooseMe />
             <Projects />
