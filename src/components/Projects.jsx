@@ -13,18 +13,18 @@ export default function Projects() {
     {
       id: "01",
       categoryKey: "fullstack",
-      tags: ["React", "Laravel", "Tailwind CSS", "MySQL"],
+      tags: ["NextJs", "Tailwind CSS", "MySQL"],
       status: "Production Ready",
-      demoLink: "https://example.com",
-      githubLink: "https://github.com",
+      demoLink: "https://resto-mayo.vercel.app/",
+      githubLink: "https://github.com/AgusDana1/RestoMayoo.git",
     },
     {
       id: "02",
       categoryKey: "webapp",
-      tags: ["React", "Node.js", "Tailwind CSS", "PostgreSQL"],
+      tags: ["Laravel", "Node.js", "Tailwind CSS", "MySQL"],
       status: "Active",
       demoLink: "https://example.com",
-      githubLink: "https://github.com",
+      githubLink: "https://github.com/AgusDana1/lms_simple.git",
     },
     {
       id: "03",

@@ -108,19 +108,19 @@ export const translations = {
       items: [
         {
           id: "01",
-          title: "AutoRent - Fullstack Rental Platform",
+          title: "RestoMayo - Fullstack Restaurant Platform",
           category: "Fullstack",
           description:
-            "Comprehensive web system for automated vehicle reservations, real-time availability tracking, transaction management, and administrative reporting.",
-          highlightMetric: "40% Faster Booking",
+            "Modern restaurant web application built with Next.js, featuring interactive table selection, food & beverage catalog, instant ordering cart, and dining management.",
+          highlightMetric: "Instant Table Order",
         },
         {
           id: "02",
-          title: "Nexus Dashboard & Analytics Suite",
+          title: "SimpleLMS - Focused Learning Management System",
           category: "Web App",
           description:
-            "High-performance telemetry and business intelligence dashboard featuring interactive data visualizations, dark-mode first UI, and role-based access control.",
-          highlightMetric: "Realtime Socket Sync",
+            "A centralized web-based learning management system (LMS) built with Laravel to streamline online coursework, classroom distribution, assignments, and student tracking.",
+          highlightMetric: "Centralized Learning",
         },
         {
           id: "03",
@@ -359,19 +359,19 @@ export const translations = {
       items: [
         {
           id: "01",
-          title: "AutoRent - Platform Rental Fullstack",
+          title: "RestoMayo - Platform Restoran Fullstack",
           category: "Fullstack",
           description:
-            "Sistem web komprehensif untuk reservasi kendaraan otomatis, pelacakan ketersediaan real-time, manajemen transaksi, dan laporan admin.",
-          highlightMetric: "40% Lebih Cepat",
+            "Aplikasi web restoran modern berbasis Next.js dengan fitur pemilihan meja santap, katalog hidangan kuliner interaktif, pemesanan menu langsung, dan manajemen pesanan.",
+          highlightMetric: "Pemesanan Meja Cepat",
         },
         {
           id: "02",
-          title: "Nexus Dashboard & Analytics Suite",
+          title: "SimpleLMS - Platform Manajemen Pembelajaran",
           category: "Web App",
           description:
-            "Dashboard telemetri dan business intelligence performa tinggi dengan visualisasi data interaktif, UI dark-mode, dan kontrol akses bertingkat.",
-          highlightMetric: "Sinkronisasi Socket",
+            "Platform berbasis web (LMS) yang dirancang dengan Laravel untuk memfasilitasi proses pembelajaran terpusat, distribusi materi kelas, penugasan, dan pemantauan siswa.",
+          highlightMetric: "Pembelajaran Terpusat",
         },
         {
           id: "03",
