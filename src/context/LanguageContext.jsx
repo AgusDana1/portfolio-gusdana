@@ -37,6 +37,8 @@ export const translations = {
       sub: "// 01. ABOUT ME",
       title: "Architecting High-Performance Systems",
       desc: "Bridging the gap between scalable backend engineering and sleek, futuristic user interfaces.",
+      devStatus: "Available for Projects",
+      devRole: "Fullstack Developer",
       cardTitle: "Fullstack Engineer with an eye for modern aesthetics",
       cardDesc:
         "I specialize in developing end-to-end applications that are responsive, scalable, and visually striking. From structuring efficient database queries to crafting fluid micro-interactions, I focus on clean code and reliable system architecture.",
@@ -288,6 +290,8 @@ export const translations = {
       sub: "// 01. TENTANG SAYA",
       title: "Merancang Sistem Berperforma Tinggi",
       desc: "Menjembatani backend engineering yang scalable dengan antarmuka pengguna futuristik yang presisi.",
+      devStatus: "Siap Menerima Proyek",
+      devRole: "Fullstack Developer",
       cardTitle: "Fullstack Engineer dengan fokus estetika modern",
       cardDesc:
         "Saya mengkhususkan diri dalam pengembangan aplikasi end-to-end yang responsif, scalable, dan berdaya visual kuat. Mulai dari query database efisien hingga micro-interaction yang mulus, fokus saya adalah kode bersih dan arsitektur sistem yang andal.",
