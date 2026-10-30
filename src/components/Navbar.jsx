@@ -131,7 +131,7 @@ export default function Navbar({ isLoaded = true }) {
           </a>
 
           {/* DESKTOP NAVIGATION MENU */}
-          <ul className="hidden md:flex items-center gap-1 bg-zinc-900/60 p-1 rounded-full border border-zinc-800">
+          <ul className="hidden md:flex items-center gap-1 p-1 rounded-md">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <a
